@@ -1,0 +1,6 @@
+                        <div class="box">
+                            <div class="head"><strong>Notes</strong></div>
+                            <div class="body">
+                                <p class="purchase">[[NOTES]]</p>
+                            </div>
+                        </div>

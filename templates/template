@@ -1,0 +1,22 @@
+<html>
+	<head>
+		<title>tici taci records</title>
+		<link href="css/music.css" rel="stylesheet" type="text/css" />
+		<link rel='icon' href='images/site/favicon.png' type='image/x-icon'/ >
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta property="og:image" content="https://www.ticitaci.com/images/site/header.png" />
+        <meta property="og:image:height" content="239" />
+        <meta property="og:image:width" content="1293" />
+        <meta property="og:title" content="tici taci" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.ticitaci.com" />
+        <meta property="og:description" content="tici taci - bringing you electric funk rekkids at tempos below 120 bpm. No pre-packed freeze dried loops here, all tracks have live instruments well to the fore, from funky wah-wah guitars and deep chunky bass to temperamental analogue synthesisers and live percussion." />
+	</head>
+	<body>
+		<img src="images/site/header.png" style="width:100%;"/>
+		<div class="content">
+		  [CONTENTS]
+		</div>
+
+	</body>
+</html>

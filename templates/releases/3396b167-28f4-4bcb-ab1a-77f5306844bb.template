@@ -1,0 +1,67 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:fb="http://ogp.me/ns/fb#">
+    <head>
+        <title>[ARTIST] / [TITLE] / [CATNO]</title>
+        <link href="../css/release.css" rel="stylesheet" type="text/css" />
+        <link rel='icon' href='../images/site/favicon.png' type='image/x-icon'/ >
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="og:image" content="https://ticitaci.com/images/covers/[RELEASEID]" />
+        <meta property="og:image:height" content="[[IMAGEHEIGHT]]" />
+        <meta property="og:image:width" content="[[IMAGEWIDTH]]" />
+        <meta property="og:title" content="[ARTIST] / [TITLE] / [YEAR] / [CATNO]" />
+        <meta property="og:description" content="electric funk rekkids at tempos below 120 bpm" />
+        <meta property="og:type" content="website" />
+    </head>
+    <body>
+        <div id="wrapper">
+            <div id="content">
+            <a href="../"><img src="../images/site/header.png" style="width:100%;"/></a>
+                <div class="thin">
+                    <div class="header">
+                        <h2>[ARTIST] / [TITLE] / [CATNO]</h2>
+                        <div class="linkbox">&nbsp;</div>
+                    </div>
+                    <div class="sidebar">
+                        <div class="box box_image box_image_albumart box_albumart">
+                            <div class="head"><strong>Cover</strong></div>
+                                <div id="covers">
+                                    <div id="cover_div_0" class="pad">
+                                        <img width="100%" src="[COVERIMAGE]" alt="[ARTIST] - [TITLE] [[YEAR]] [[CATNO]]">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="box box_artists">
+                                <div class="head"><strong>Artists</strong></div>
+                                <ul class="stats nobullet" id="artist_list">
+                                    [ARTISTS]
+                                    [REMIXERS]
+                                    [MASTERING]
+                                    <li>&nbsp;</li>
+                                    <li><b>Released:</b></li>
+                                    <li>[YEAR]</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="main_column">
+                        [PHYSICAL]
+
+                        [PURCHASEINFO]
+
+                        [TRACKS]
+
+                        [SOUNDCLOUD]
+
+                        [BANDCAMP]
+
+                        [NOTES]
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

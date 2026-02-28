@@ -1,0 +1,69 @@
+.content {
+  max-width: 863px;
+  margin: auto;
+  margin-top:40px;
+}
+
+h2 {
+    display: block;
+    font-size: 1.5em;
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+
+#content .header h2, #content > .thin > h2:first-child, #content > .thin > .header:first-of-type > h3:first-of-type {
+    background-color: #f0f0f0;
+    margin: 20px -20px -1px -20px !important;
+    padding: 20px;
+    -moz-border-radius-topleft: 11px;
+    -webkit-border-radius-topleft: 11px;
+    border-top-left-radius: 11px;
+    -moz-border-radius-topright: 11px;
+    -webkit-border-radius-topright: 11px;
+    border-top-right-radius: 11px;
+    border-bottom: 1px solid #c6c6c6;
+    position: relative;
+    z-index: 3;
+}
+
+
+#coverart {
+    background-color: #ffffff;
+    margin: 0 0 20px 0;
+}
+
+div.table {
+    display: table;
+    margin: 0 auto;
+}
+
+
+ul.collage_images {
+    border-collapse: collapse;
+    margin: 0 0 0 0;
+    list-style-position: inside;
+    padding: 50;
+    overflow: hidden;
+}
+
+ul.collage_images li {
+    border: none;
+    margin: auto;
+    list-style: none;
+    text-align: center;
+    display: inline;
+}
+
+ul.collage_images img {
+    width: 127px;
+    height: 127px;
+    transition: transform .2s;
+    z-index: 1;
+}
+
+ul.collage_images img:hover {
+      transform: scale(1.5);
+}

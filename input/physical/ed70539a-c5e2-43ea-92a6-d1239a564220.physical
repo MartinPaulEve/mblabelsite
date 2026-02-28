@@ -1,0 +1,20 @@
+CD + Digital Download</p>
+
+<p><img src="../images/physical/ed70539a-c5e2-43ea-92a6-d1239a564220" alt="The Long Champs - Straight to Audio" style="max-width:100%;" /></p>
+
+<p>
+
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="5Y5AAHY3483QA">
+<table>
+<tr><td><input type="hidden" name="on0" value="Digital Download Option">Physical CD + Digital Download</td></tr><tr><td><select name="os0">
+<option value="Audio CD plus mp3 -">Audio CD plus mp3 - £8.00 GBP</option>
+<option value="Audio CD plus wav -">Audio CD plus wav - £8.00 GBP</option>
+<option value="Audio CD plus aac -">Audio CD plus aac - £8.00 GBP</option>
+</select> </td></tr>
+</table>
+<input type="hidden" name="currency_code" value="GBP">
+<input type="image" src="https://www.paypalobjects.com/en_US/GB/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal – The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1">
+</form>

@@ -1,0 +1,6 @@
+                        <div class="box">
+                            <div class="head"><strong>Physical Purchase</strong></div>
+                            <div class="body">
+                                <p class="purchase">[[PHYSICAL]]</p>
+                            </div>
+                        </div>
