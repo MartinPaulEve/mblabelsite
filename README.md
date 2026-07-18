@@ -64,8 +64,11 @@ uv run mblabelsite add-soundcloud "https://soundcloud.com/..." "release title"
 **Add a Bandcamp player to a release:**
 
 ```
-uv run mblabelsite add-bandcamp '<iframe ...></iframe>' "release title"
+uv run mblabelsite add-bandcamp "https://artist.bandcamp.com/track/name" "release title"
 ```
+
+The embed HTML is built from the Bandcamp page URL. To supply the embed code by
+hand instead (for private or unlisted items), use `add-bandcamp-html`.
 
 **Override a release's URL slug:**
 

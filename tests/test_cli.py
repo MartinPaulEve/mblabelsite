@@ -1,9 +1,12 @@
 """Tests for CLI commands."""
 
 
+from pathlib import Path
+
 import pytest
 from click.testing import CliRunner
 
+from mblabelsite.bandcamp import BandcampError
 from mblabelsite.cli import cli
 from mblabelsite.database import Database
 from mblabelsite.models import Artist, Release
@@ -87,13 +90,74 @@ class TestShowRelease:
 
 
 class TestDataManipulation:
-    def test_add_bandcamp(self, runner, db_setup):
+    def test_add_bandcamp_html(self, runner, db_setup):
         result = runner.invoke(
             cli,
-            _base_args(db_setup) + ["add-bandcamp", "<iframe>test</iframe>", "Electric Dreams"],
+            _base_args(db_setup)
+            + ["add-bandcamp-html", "<iframe>test</iframe>", "Electric Dreams"],
         )
         assert result.exit_code == 0
         assert "Bandcamp embed set" in result.output
+        db = Database(Path(db_setup["data_dir"]) / "cache.db")
+        try:
+            assert db.get_bandcamp_embed("r1") == "<iframe>test</iframe>"
+        finally:
+            db.close()
+
+    def test_add_bandcamp_from_url_stores_generated_embed(
+        self, runner, db_setup, monkeypatch
+    ):
+        monkeypatch.setattr(
+            "mblabelsite.cli.embed_from_url",
+            lambda url: f"<iframe>{url}</iframe>",
+        )
+        result = runner.invoke(
+            cli,
+            _base_args(db_setup)
+            + ["add-bandcamp", "https://ticitaci.bandcamp.com/track/netbacks", "Electric Dreams"],
+        )
+        assert result.exit_code == 0
+        assert "Bandcamp embed set" in result.output
+        db = Database(Path(db_setup["data_dir"]) / "cache.db")
+        try:
+            assert db.get_bandcamp_embed("r1") == (
+                "<iframe>https://ticitaci.bandcamp.com/track/netbacks</iframe>"
+            )
+        finally:
+            db.close()
+
+    def test_add_bandcamp_reports_lookup_failure(self, runner, db_setup, monkeypatch):
+        def _fail(url):
+            raise BandcampError("could not find that release on Bandcamp")
+
+        monkeypatch.setattr("mblabelsite.cli.embed_from_url", _fail)
+        result = runner.invoke(
+            cli,
+            _base_args(db_setup)
+            + ["add-bandcamp", "https://ticitaci.bandcamp.com/track/nope", "Electric Dreams"],
+        )
+        assert result.exit_code != 0
+        assert "could not find that release on Bandcamp" in result.output
+        db = Database(Path(db_setup["data_dir"]) / "cache.db")
+        try:
+            assert db.get_bandcamp_embed("r1") is None
+        finally:
+            db.close()
+
+    def test_remove_bandcamp_clears_embed(self, runner, db_setup):
+        db = Database(Path(db_setup["data_dir"]) / "cache.db")
+        db.set_bandcamp_embed("r1", "<iframe>test</iframe>")
+        db.close()
+        result = runner.invoke(
+            cli, _base_args(db_setup) + ["remove-bandcamp", "Electric Dreams"]
+        )
+        assert result.exit_code == 0
+        assert "Bandcamp embed removed" in result.output
+        db = Database(Path(db_setup["data_dir"]) / "cache.db")
+        try:
+            assert db.get_bandcamp_embed("r1") is None
+        finally:
+            db.close()
 
     def test_add_note(self, runner, db_setup):
         result = runner.invoke(

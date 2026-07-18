@@ -5,6 +5,7 @@ from pathlib import Path
 
 import click
 
+from mblabelsite.bandcamp import BandcampError, embed_from_url
 from mblabelsite.config import LABEL_ID
 from mblabelsite.database import Database
 from mblabelsite.fetcher import FetchError
@@ -190,11 +191,32 @@ def search(ctx, query):
 
 
 @cli.command("add-bandcamp")
+@click.argument("url")
+@click.argument("release_name")
+@click.pass_context
+def add_bandcamp(ctx, url, release_name):
+    """Add Bandcamp embed to a release from a Bandcamp track or album URL."""
+    db = _get_db(ctx)
+    try:
+        release = _find_release(db, release_name)
+        if not release:
+            return
+        try:
+            embed_code = embed_from_url(url)
+        except BandcampError as exc:
+            raise click.ClickException(str(exc)) from exc
+        db.set_bandcamp_embed(release.id, embed_code)
+        click.echo(f"Bandcamp embed set for: {release.title}")
+    finally:
+        db.close()
+
+
+@cli.command("add-bandcamp-html")
 @click.argument("embed_code")
 @click.argument("release_name")
 @click.pass_context
-def add_bandcamp(ctx, embed_code, release_name):
-    """Add Bandcamp embed to a release."""
+def add_bandcamp_html(ctx, embed_code, release_name):
+    """Add Bandcamp embed to a release from raw embed HTML."""
     db = _get_db(ctx)
     try:
         release = _find_release(db, release_name)

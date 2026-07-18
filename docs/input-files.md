@@ -58,7 +58,7 @@ To get this URL, use SoundCloud's embed/share dialog and extract the `src` from 
 
 **Directory:** `input/bandcamp/`
 **Extension:** `.bandcamp`
-**CLI equivalent:** `add-bandcamp` / `remove-bandcamp`
+**CLI equivalent:** `add-bandcamp` (from a Bandcamp URL) / `add-bandcamp-html` (raw HTML) / `remove-bandcamp`
 
 Each file contains the full Bandcamp embed HTML (typically an iframe). This is inserted directly into the release page.
 

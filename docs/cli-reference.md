@@ -123,10 +123,20 @@ All commands that accept a release or artist name perform fuzzy matching. If the
 #### add-bandcamp
 
 ```
-uv run mblabelsite add-bandcamp '<iframe ...></iframe>' "release title"
+uv run mblabelsite add-bandcamp "https://artist.bandcamp.com/track/name" "release title"
 ```
 
-Associates a Bandcamp embed with a release. The first argument is the full embed code (the HTML iframe you get from Bandcamp's share/embed dialog). Quote it carefully since it contains HTML.
+Associates a Bandcamp embed with a release. The first argument is the public Bandcamp track or album URL; the embed HTML is generated from it by looking the item up via Bandcamp's public search API. Album URLs get the taller player with a tracklist; track URLs get the compact 120px player.
+
+The lookup fails for items that are private, unlisted, or otherwise not in Bandcamp's search index — use `add-bandcamp-html` for those.
+
+#### add-bandcamp-html
+
+```
+uv run mblabelsite add-bandcamp-html '<iframe ...></iframe>' "release title"
+```
+
+Associates a Bandcamp embed with a release using embed code you supply yourself (the HTML iframe from Bandcamp's share/embed dialog). Quote it carefully since it contains HTML. Prefer `add-bandcamp` unless the URL lookup cannot find the item.
 
 #### remove-bandcamp
 
