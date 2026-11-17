@@ -1,6 +1,6 @@
 [project]
 name = "mblabelsite"
-version = "1.0.0"
+version = "1.1.0"
 description = "Static site generator for tici taci records, powered by MusicBrainz"
 readme = "README.md"
 requires-python = ">=3.12"
@@ -22,7 +22,7 @@ build-backend = "hatchling.build"
 packages = ["src/mblabelsite"]
 
 [tool.commitizen]
-version = "1.0.0"
+version = "1.1.0"
 version_files = ["__version__.py", "pyproject.toml:version"]
 update_changelog_on_bump = true
 
